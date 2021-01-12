@@ -1,0 +1,60 @@
+set nocompatible
+
+let g:netrw_banner = 0
+nnoremap - :e dummynetrwbuf \| Explore \| bw! dummynetrwbuf <CR>
+
+filetype plugin indent on
+
+set background=dark
+set laststatus=2
+
+set path+=**
+set wildmenu
+set wildmode=list:full
+
+let mapleader = " "
+
+nnoremap <leader>v <ESC>:vs<CR>
+nnoremap <leader>s <ESC>:sp<CR>
+nnoremap <leader>o <ESC>:only<CR>
+nnoremap <leader>z <C-w>\|<C-w>_
+nnoremap <leader><leader>z <C-w>=
+nnoremap <leader>c <ESC>:copen<CR>
+nnoremap <leader><leader>c <ESC>:cclose<CR>
+nnoremap <leader>b <ESC>:buffers <CR>:buffer <SPACE>
+nnoremap <leader>C q:
+nnoremap <leader>: q:
+nnoremap <leader>S q/
+nnoremap <leader>q :q<cr>
+nnoremap <leader>Z :wq<cr>
+nnoremap <leader>w :w<cr>
+nnoremap <leader>o :only<cr>
+
+nnoremap <leader>gf "<ESC>:let @a = system("git diff --name-only production")<CR>:let @a =       system("tr '\n' ' '",@a)<CR>:args <C-R>a<CR>"
+
+set relativenumber
+set number
+set splitbelow
+set splitright
+                                                                                           
+set hidden  
+set tabstop=2
+set shiftwidth=2
+set expandtab
+                                                                                           
+nnoremap <Up> <ESC>:res +5<CR>
+noremap <Down> <ESC>:res -5<CR>
+noremap <Left> <ESC>:vert res +5<CR>
+noremap <Right> <ESC>:vert res -5<CR>
+                                                                                           
+nnoremap <C-h> <C-w>h 
+nnoremap <C-j> <C-w>j  
+nnoremap <C-k> <C-w>k   
+nnoremap <C-l> <C-w>l    
+                                                                                           
+nnoremap Y y$             
+nnoremap <C-X> :bdelete<CR>
+syn on                                              
+
+
+
