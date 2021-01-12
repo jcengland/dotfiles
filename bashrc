@@ -19,38 +19,9 @@ else
 export PS1="\[$gray\]\u\[$red\]|\[$NC\]\[$green\]\H\[$NC\]\[$red\]|\[$NC\]\[$cyan\]\w\[$NC\] > "
 fi
 
-if [ -d "$HOME/Library/Python/2.7/bin" ]; then
-    PATH="$HOME/Library/Python/2.7/bin:$PATH"
-fi
-
-if [ ${HOSTNAME} != "england-desktop.ccs.ornl.gov" ]; then
-alias pivot="ssh -X -D 8888 pivot.ccs.ornl.gov"
-else
-alias pivot="ssh -X pivot.ccs.ornl.gov"
-fi
-
 alias vi=vim
 
 
-if [ -e "/usr/bin/qsub" ]; then
-#alias ijob='qsub -I -lnodes=1 -lwalltime=8:00:00 -A stf002'
-
-function ijob {
-if [ -z $1 ]; then
-   NODES=1
-else 
-   NODES=${1}
-fi
-
-if [ -z $2 ]; then
-   WALLTIME="8:00:00"
-else 
-   WALLTIME=${2}
-fi
-
-qsub -I -lnodes=${NODES} -lwalltime=${WALLTIME} -A stf002
-}
-fi
 
 #git prompt stuff
    GIT_PROMPT_ONLY_IN_REPO=1
@@ -74,44 +45,12 @@ fi
 
 
 
-if [ -f /usr/bin/moc ] || [ -f ~/bin/mocp ]; then
-alias music="padsp mocp"
-alias nomusic="mocp -P"
-fi
 
-alias canary="cd /ccs/sys/clusters/canary_jobs"
 export PDSH_SSH_ARGS="-q"
-export LANG=en_US.UTF-8
 
 unset SSH_ASKPASS
 
-alias vssh="vagrant ssh"
-alias vup="vagrant up"
-alias vd="vagrant destroy -f"
-alias vp="vagrant provision"
-alias vstat="vagrant status"
-alias vh="vagrant halt"
-alias vr="vagrant reload"
-alias vcd="cd /home/england/condor_vagrant/vagrant_condor/"
-alias role="cd ~/puppet/site/role/"
-alias hr="cd ~/puppet/hieradata/"
-alias pp="cd ~/puppet"
-alias prof="cd ~/puppet/site/profile/" 
-alias docs="cd ~/devel/docs-md"
 
-function mod() {
-if [ ! -z ${1+x} ]; then
-        module=$1
-	if [ ! -z ${2+x} ]; then 
-		cd ~/puppet/modules/${module}/$2
-	else
-                cd ~/puppet/modules/${module}/manifests
-	fi	
-else
-        cd ~/puppet/modules/
-fi
-
-}
 
 function ssh-sc() {
     # This function removes and adds keys to the ssh-agent you are using
