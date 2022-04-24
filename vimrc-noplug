@@ -1,6 +1,7 @@
 set nocompatible
 
 let g:netrw_banner = 0
+" Replacement for vim-vinegar
 nnoremap - :e dummynetrwbuf \| Explore \| bw! dummynetrwbuf <CR>
 
 filetype plugin indent on
@@ -13,12 +14,13 @@ set wildmenu
 set wildmode=list:full
 
 let mapleader = " "
+inoremap jk <esc>
 
 nnoremap <leader>v <ESC>:vs<CR>
 nnoremap <leader>s <ESC>:sp<CR>
 nnoremap <leader>o <ESC>:only<CR>
 nnoremap <leader>z <C-w>\|<C-w>_
-nnoremap <leader><leader>z <C-w>=
+nnoremap <leader>u <C-w>=
 nnoremap <leader>c <ESC>:copen<CR>
 nnoremap <leader><leader>c <ESC>:cclose<CR>
 nnoremap <leader>b <ESC>:buffers <CR>:buffer <SPACE>
@@ -30,7 +32,7 @@ nnoremap <leader>Z :wq<cr>
 nnoremap <leader>w :w<cr>
 nnoremap <leader>o :only<cr>
 
-nnoremap <leader>gf "<ESC>:let @a = system("git diff --name-only production")<CR>:let @a =       system("tr '\n' ' '",@a)<CR>:args <C-R>a<CR>"
+" nnoremap <leader>gf "<ESC>:let @a = system("git diff --name-only production")<CR>:let @a =       system("tr '\n' ' '",@a)<CR>:args <C-R>a<CR>"
 
 set relativenumber
 set number
