@@ -35,11 +35,23 @@ bind '"jk":vi-movement-mode'
 
 
 
-#git prompt stuff
-   GIT_PROMPT_ONLY_IN_REPO=1
+
 if [ -f ~/.bash-git-prompt/gitprompt.sh ] ; then
+
+
 source ~/.bash-git-prompt/gitprompt.sh
+source ~/.bash-git-prompt/prompt-colors.sh
+
+override_git_prompt_colors() {
+  GIT_PROMPT_THEME_NAME="Custom"
+  GIT_PROMPT_START_USER="_LAST_COMMAND_INDICATOR_ ${ResetColor} [${USER}${Red}|${ResetColor}${Green}${HOSTNAME%%.*}${Red}|${ResetColor}${Yellow}${PathShort}${ResetColor}]"
+  GIT_PROMPT_START_ROOT="${GIT_PROMPT_START_USER}"
+}
+
+reload_git_prompt_colors "Custom"
+GIT_PROMPT_ONLY_IN_REPO=1
 fi
+
 
 #keychain stuff
 
