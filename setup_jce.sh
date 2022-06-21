@@ -20,6 +20,7 @@ fi
 ##################
 if [[ ${CURL} -eq 0 ]]; then
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+mkdir ~/.backups
 fi
 
 

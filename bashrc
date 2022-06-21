@@ -103,5 +103,5 @@ p () {
     | cut -z -f 1 -d $'\t' | tr -d '\n' | xargs -r --null $open > /dev/null 2> /dev/null
 }
 
-source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
+source /usr/local/etc/bash_completion.d/git-completion.bash
 

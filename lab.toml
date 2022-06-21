@@ -1,0 +1,7 @@
+[core]
+  host = "https://izlc.llnl.gov"
+  token = " "
+  user = "cengland"
+
+[tls]
+  ca_file = "/Users/england24/.config/lab/cert.pem"
