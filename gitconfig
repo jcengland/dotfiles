@@ -1,0 +1,19 @@
+[user]
+	name = 
+	email = 
+[alias]
+  br = branch
+  cob = checkout -b
+  co = checkout
+  chmk = cherry -v main
+  pru = remote prune origin
+	lg = log --oneline --color --graph --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'
+	st = status -sb
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
