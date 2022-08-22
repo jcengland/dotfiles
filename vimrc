@@ -26,7 +26,7 @@ Plug 'dhruvasagar/vim-table-mode' " Table mode
 Plug 'Yggdroot/indentLine'        " Show lines for indention
 Plug 'vimwiki/vimwiki'            " Personal Wiki
 Plug 'mattn/calendar-vim'         " Calendar works with vim wiki
-Plug 'davidhalter/jedi-vim'       " Python help
+" Plug 'davidhalter/jedi-vim'       " Python help
 Plug 'mbbill/undotree'            " Tracking undo
 Plug 'Glench/Vim-Jinja2-Syntax' "Jinja2 
 Plug 'pearofducks/ansible-vim'  "Ansible plugin
@@ -125,7 +125,7 @@ nnoremap <leader><leader>l <ESC>:lclose<CR>
 
 " fzf shortcuts
 nnoremap <leader>b :Buffer<CR>
-nnoremap <leader>g :Gfiles<CR>
+nnoremap <leader>g :GFiles<CR>
 
 " search and command buffers
 noremap <leader>C q:
@@ -147,7 +147,7 @@ nnoremap <leader>I :IndentLinesToggle<CR>
 nnoremap <leader>gw <ESC>:Gwrite<CR>
 nnoremap <leader>gc <ESC>:Git commit<CR>
 nnoremap <leader>gp <ESC>:Git push<CR>
-nnoremap <leader>gb <EsC>:Gblame<CR>
+nnoremap <leader>gb <EsC>:Git blame<CR>
 nnoremap <leader>gg <ESC>:Ggrep 
 nnoremap <leader>gs <ESC>:G<CR>  
 " Lab leaders
@@ -205,3 +205,18 @@ let g:indentLine_enabled = 0
 
  let g:fzf_layout = { 'down': '40%' }
 
+
+ function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    %s#\($\n\s*\)\+\%$##e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+autocmd BufWritePre *.py,*.js,*.sh,*.yml,*.yaml, *.j2 :call <SID>StripTrailingWhitespaces()

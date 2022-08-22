@@ -22,6 +22,7 @@ fi
 alias vi=vim
 alias dev="cd ~/devel"
 alias exit_slic="ssh -O exit rzslic; ssh -O exit oslic"
+alias izgw=" ssh -O exit izgw; ssh izgw"
 alias rzslic=" ssh -O exit rzslic; ssh rzslic"
 alias oslic="ssh -O exit oslic; ssh oslic"
 alias clean_mc="ssh -O exit rzslic; ssh -O exit oslic"
@@ -32,6 +33,10 @@ alias kcs="keychain --stop all"
 set -o vi
 bind '"jk":vi-movement-mode'
 
+if [ "$(uname -s)" == "Darwin" ]; then
+alias czgl="export CZ_GL_TOKEN=\$(pbpaste)"
+alias izgl="export IZ_GL_TOKEN=\$(pbpaste)"
+fi
 
 
 
@@ -104,4 +109,3 @@ p () {
 }
 
 source /usr/local/etc/bash_completion.d/git-completion.bash
-
